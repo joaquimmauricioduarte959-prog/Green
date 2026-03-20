@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shampoos Naturales y Artesanales - Método Herbal Haircare</title>
+    <style>
+        /* ================= ESTILOS GLOBALES ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f3f4f6; color: #333; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; padding: 0 20px; }
+        .text-center { text-align: center; }
+        .text-orange { color: #ff9800; }
+        .text-green { color: #4CAF50; }
+        .text-purple { color: #800080; }
+        .text-red { color: #e53935; }
+        .text-white { color: #fff; }
+        .text-black { color: #000; }
+        .bg-black { background-color: #000; color: #fff; padding: 40px 0; }
+        .bg-white { background-color: #fff; padding: 40px 0; }
+        img { max-width: 100%; height: auto; display: block; margin: 20px auto; border-radius: 8px; }
+        img.no-radius { border-radius: 0; margin: 0 auto; }
+        
+        /* ================= BLOQUE DE OFERTA (STICKY ON SCROLL) ================= */
+        /* El placeholder evita que la pantalla dé un salto cuando la barra se vuelve fija */
+        .cta-placeholder { width: 100%; min-height: 120px; margin: 10px 0 30px 0; } 
+        .cta-block { background-color: #dced00; padding: 15px 20px; text-align: center; border-radius: 10px; width: 100%; z-index: 9999; }
+        .cta-block.is-fixed { position: fixed; top: 0; left: 0; right: 0; border-radius: 0; margin: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.2); animation: slideDown 0.3s ease-out; }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .btn-green-top { background-color: #4CAF50; color: white; border: none; padding: 15px 20px; font-size: 16px; font-weight: bold; border-radius: 25px; width: 100%; max-width: 560px; cursor: pointer; box-shadow: 0 4px 0 #2e7d32; display: inline-block; text-decoration: none; margin-bottom: 10px; transition: transform 0.2s;}
+        .btn-green-top:active { transform: translateY(4px); box-shadow: none; }
+        .cta-block.is-fixed .btn-green-top { padding: 12px 20px; margin-bottom: 5px; } 
+        
+        .stock-info { font-size: 14px; color: #333; margin: 5px 0 8px 0; font-weight: normal;}
+        .progress-bar-bg { background-color: #fff; width: 100%; max-width: 560px; height: 22px; position: relative; border-radius: 2px; margin: 0 auto;}
+        .progress-bar-fill { background-color: #e53935; height: 100%; width: 86%; position: absolute; top: 0; left: 0; }
+        .progress-text { position: absolute; right: 10px; color: #333; font-weight: bold; font-size: 14px; line-height: 22px; z-index: 2; }
+
+        /* ================= REPRODUCTOR DE VIDEO VIMEO ================= */
+        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; margin: 20px auto 30px auto; border: 3px solid #000; border-radius: 8px; overflow: hidden; background-color: #000; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* ================= PREGUNTAS CABECERA ================= */
+        .header-question { font-size: 22px; font-weight: normal; margin-bottom: 25px; color: #111; line-height: 1.4; }
+
+        /* ================= LISTAS E ICONOS ================= */
+        .list-container { text-align: left; margin: 0 auto; font-size: 18px; line-height: 1.4; }
+        .list-item { margin-bottom: 20px; display: flex; align-items: flex-start; }
+        .icon { font-size: 24px; margin-right: 12px; }
+        .icon-finger { margin-left: 20px; }
+
+        /* ================= TARJETAS INDIVIDUALES DE BONOS ================= */
+        .bono-card { border: 2px dashed #800080; border-radius: 12px; padding: 25px 20px; margin-bottom: 35px; background-color: #fcfcfc; text-align: center; }
+        .bono-title { font-size: 26px; font-weight: bold; margin-bottom: 15px; color: #000; }
+        .bono-desc { font-size: 18px; color: #333; margin-bottom: 20px; }
+        .bono-price { font-size: 18px; margin-top: 15px; color: #333; }
+        .bono-price .strike { text-decoration: line-through; color: #e53935; font-weight: bold; }
+        .bono-price .gratis { color: #800080; font-weight: bold; font-size: 20px; }
+
+        /* ================= TEMPORIZADORES ANIMADOS ================= */
+        .timer-box { display: flex; justify-content: center; gap: 15px; margin: 20px 0 10px 0; }
+        .timer-item { background-color: #ffc107; border-radius: 10px; padding: 15px; text-align: center; min-width: 80px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .timer-number { font-size: 32px; font-weight: normal; color: #d32f2f; line-height: 1; }
+        .timer-label { font-size: 16px; color: #000; margin-top: 5px; font-weight: bold; }
+
+        /* ================= ACORDEÓN (MÓDULOS Y PREGUNTAS) ================= */
+        .accordion { background-color: #d2691e; color: white; cursor: pointer; padding: 20px; width: 100%; border: none; text-align: left; outline: none; font-size: 18px; transition: 0.4s; border-radius: 10px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .accordion.faq { background-color: #f1f1f1; color: #555; border-radius: 5px; font-weight: bold; }
+        .accordion:hover { filter: brightness(1.1); }
+        .accordion:after { content: '\002B'; color: #fff; font-size: 24px; font-weight: 300; background: rgba(255,255,255,0.2); border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;}
+        .accordion.faq:after { color: #fff; background: #ccc; }
+        .active:after { content: "\2212"; }
+        .panel { padding: 0 18px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.2s ease-out; margin-bottom: 15px; text-align: left; }
+        .panel p { padding: 15px 0; }
+
+        /* ================= CAJAS DE OPINIONES ================= */
+        .opiniones-box { background: transparent; padding: 10px; }
+        .opiniones-box img { box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 25px; border-radius: 10px; width: 100%; }
+        .btn-img { max-width: 90%; margin: 30px auto; cursor: pointer; transition: transform 0.2s; }
+        .btn-img:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+    <!-- SECCIÓN 1: CABECERA, VIDEO Y PREGUNTAS -->
+    <section class="bg-white" style="padding-top: 30px;">
+        <div class="container text-center">
+            
+            <!-- Título Principal -->
+            <h1 class="text-black" style="font-size: 28px; font-weight: 900; line-height: 1.2;">
+                CONVIÉRTETE EN <span class="text-green">MENOS DE 7 DÍAS</span> UNA EXPERTA EN SHAMPOOS NATURALES Y COMIENZA TU <span class="text-green">PROPIO NEGOCIO RENTABLE</span> EN CASA
+            </h1>
+            
+            <p style="font-weight: bold; font-size: 18px; margin-top: 20px;">👇 Mira el video Completo 👇</p>
+            
+            <!-- Video VSL de Vimeo -->
+            <div class="video-container">
+                <iframe src="https://player.vimeo.com/video/822171504?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <!-- Preguntas de persuasión Originales -->
+            <p class="header-question">¿Te sientes frustrada porque <span style="font-weight: bold;">no encuentras shampoos naturales</span> que se adapten a tus necesidades?</p>
+            <p class="header-question">¿Te gustaría aprender <span style="font-weight: bold;">paso a paso</span> a elaborar shampoos y acondicionadores naturales en casa?</p>
+            <p class="header-question">¿Te sientes frustrada porque no encuentras opciones para <span style="font-weight: bold;">generar ingresos extras</span> en esta época tan importante?</p>
+            <p class="header-question">¿Te gustaría aprender en menos de 7 días y comenzar <span style="font-weight: bold;">tu propio negocio rentable</span> en casa?</p>
+            
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: NEGRA (QUÉ APRENDERÁS) -->
+    <section class="bg-black">
+        <div class="container text-center">
+            
+            <h1 class="text-orange" style="font-size: 28px; font-weight: 900; margin-bottom: 40px; line-height: 1.3;">ESTA ES TU OPORTUNIDAD PARA INICIAR ESE NEGOCIO QUE SIEMPRE HAS SOÑADO</h1>
+
+            <img src="https://i.postimg.cc/Wp9nH299/00103-2-1.png" alt="Descarga ahora mismo el libro" class="no-radius">
+            <img src="https://i.postimg.cc/KYyrM4zj/Mockup-Shampoo.png" alt="Libro Shampoos Naturales" style="max-width: 80%;">
+            
+            <h2 style="font-size: 30px; margin: 40px 0 30px 0;">¿Qué vas a Aprender?</h2>
+            
+            <div class="list-container">
+                <div class="list-item"><span class="icon text-green">✅</span><p>Aprenderás el <span class="text-orange">paso a paso desde lo más básico hasta lo más avanzado</span> para elaborar diferentes tipos de Shampoos Artesanales como:</p></div>
+                <div class="list-item icon-finger"><span class="icon text-orange">👉</span><p>Shampoo para el cabello graso.</p></div>
+                <div class="list-item icon-finger"><span class="icon text-orange">👉</span><p>Shampoo anticaída y anticaspa.</p></div>
+                <div class="list-item icon-finger"><span class="icon text-orange">👉</span><p>Shampoo para cabello teñido.</p></div>
+                <div class="list-item icon-finger"><span class="icon text-orange">👉</span><p>Shampoo nutritivo para cabello seco.</p></div>
+                <div class="list-item icon-finger"><span class="icon text-orange">👉</span><p>Shampoo para el cuidado de las canas y mucho más...</p></div>
+                
+                <div class="list-item"><span class="icon text-green">✅</span><p>Conocerás la <span class="text-orange">cantidad exacta</span> de materiales que debes utilizar para garantizar que cada uno de tus productos sea <span class="text-orange">efectivo y saludable</span> para el cabello.</p></div>
+            </div>
+            
+            <img src="https://i.postimg.cc/cHhmZZdK/Diseno-sin-titulo-91.jpg" alt="Ingredientes Naturales">
+
+            <div class="list-container" style="margin-top: 30px;">
+                <div class="list-item"><span class="icon text-green">✅</span><p>Aprenderás <span class="text-orange">paso a paso</span> a elaborar diferentes tipos de <span style="text-decoration: underline;">Acondicionadores Naturales</span> como:</p></div>
+                <div class="list-item icon-finger"><span class="icon text-orange">👉</span><p>Acondicionador reparador anti-frizz.</p></div>
+                <div class="list-item icon-finger"><span class="icon text-orange">👉</span><p>Acondicionador para cabello seco y dañado.</p></div>
+                <div class="list-item icon-finger"><span class="icon text-orange">👉</span><p>Acondicionador para cabello con tendencia a la caída.</p></div>
+                
+                <div class="list-item"><span class="icon text-green">✅</span><p>También aprenderás a <span class="text-orange">elaborar tónico, sérum y mascarilla capilar</span> para cuidar y fortalecer tu cabello.</p></div>
+            </div>
+
+            <img src="https://i.postimg.cc/SN3GmgbT/Diseno-sin-titulo-92.jpg" alt="Más Ingredientes">
+
+            <div class="list-container" style="margin-top: 30px;">
+                <div class="list-item"><span class="icon text-green">✅</span><p><span class="text-orange">Desarrollarás habilidades de negocios</span> para iniciar y crecer tu propio negocio de productos para el cuidado capilar.</p></div>
+                <div class="list-item"><span class="icon text-green">✅</span><p>Obtendrás la información necesaria para destacar en el mercado de la cosmetica natural, <span class="text-orange">generar ingresos extras</span> y vivir una vida tranquila y sin deudas.</p></div>
+            </div>
+            
+            <img src="https://i.postimg.cc/pr1JhZht/Diseno-sin-titulo-95.jpg" alt="Elaboración en casa">
+
+            <h2 class="text-orange" style="font-size: 35px; margin-top: 50px; margin-bottom: 30px;">Beneficios del Libro</h2>
+            <div class="list-container">
+                <div class="list-item"><span class="icon">🎨</span><p>Con este libro conocerás los secretos para crear tu negocio desde la comodidad de tu casa, <span style="text-decoration: underline; font-weight: bold;">ahorrándote entre 300 a 500 dólares</span> que cuesta un curso presencial.</p></div>
+                <div class="list-item"><span class="icon">🎨</span><p>Tienes la gran ventaja que puedes aprender a tu propio ritmo, sin presiones y de una forma <span style="text-decoration: underline; font-weight: bold;">fácil y garantizada</span>.</p></div>
+                <div class="list-item"><span class="icon">🎨</span><p>Podrás <span style="text-decoration: underline; font-weight: bold;">descargar el libro</span> a tu celular o computador, para que lo estudies en cualquier parte y a cualquier hora del día.</p></div>
+                <div class="list-item"><span class="icon">🎨</span><p>Al terminar de leer el libro tendrás el conocimiento necesario para generar ganancias desde <span style="text-decoration: underline; font-weight: bold;">$100 hasta $500 dólares</span> elaborando productos de capilares de altísima calidad.</p></div>
+            </div>
+
+            <img src="https://i.postimg.cc/bJgT88p4/Diseno-sin-titulo-93.jpg" alt="Estantes Tienda">
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: BLANCA (BONOS INDIVIDUALES) -->
+    <section class="bg-white">
+        <div class="container text-center">
+            <h2 class="text-purple" style="font-size: 35px; font-weight: 900;">Obsequios<br>Disponibles Solo por<br>HOY🎁</h2>
+            <p style="font-size: 20px; margin: 20px 0 40px 0;">Solo si accedes a nuestro libro digital el día de <strong>HOY</strong> recibirás <strong>adicional al libro y completamente GRATIS los siguientes BONOS.</strong></p>
+
+            <div class="bono-card">
+                <div class="bono-title">Bono N° 1</div>
+                <p class="bono-desc"><strong>No te preocupes</strong> por donde comprar los materiales, recibirás nuestra <strong>lista de proveedores</strong> de cada país. Los mejores lugares para que adquieras los materiales a un menor costo.</p>
+                <img src="https://i.postimg.cc/KjsDkNk2/Lista-Proveedores.png" alt="Lista de Proveedores" style="max-width: 250px;">
+                <div class="bono-price">Valor: <span class="strike">$25 Dólares</span> Solo por HOY: <span class="gratis">GRATIS</span></div>
+            </div>
+
+            <div class="bono-card">
+                <div class="bono-title">Bono N° 2</div>
+                <p class="bono-desc">Libro <strong>Cremas Faciales y Corporales en Casa</strong> con el que aprenderás paso a paso a elaborar: Cremas para las estrías, crema antiarrugas, crema para manos, crema para hombres y muchas más...</p>
+                <img src="https://i.postimg.cc/nLtYDMzz/smartmockups-kuizaiww.png" alt="Cremas Faciales" style="max-width: 250px;">
+                <div class="bono-price">Valor: <span class="strike">$25 Dólares</span> Solo por HOY: <span class="gratis">GRATIS</span></div>
+            </div>
+
+            <div class="bono-card">
+                <div class="bono-title">Bono N° 3</div>
+                <p class="bono-desc">Libro <strong>Cuidado Natural de la Piel</strong>, en el cual encontraras consejos prácticos para cuidar tu piel de manera natural y lograr una apariencia radiante.</p>
+                <img src="https://i.postimg.cc/D0zcwDz6/Cuidado-Piel.png" alt="Cuidado de la Piel" style="max-width: 250px;">
+                <div class="bono-price">Valor: <span class="strike">$25 Dólares</span> Solo por HOY: <span class="gratis">GRATIS</span></div>
+            </div>
+
+            <div class="bono-card">
+                <div class="bono-title">Bono N° 4</div>
+                <p class="bono-desc">Libro <strong>Introducción a la Aromaterapia</strong>, en el cual aprenderás los diferentes tipos, propiedades y modos de uso de los aceites esenciales.</p>
+                <img src="https://i.postimg.cc/65ghBMx6/Bono-5-Aromaterapia.png" alt="Aromaterapia" style="max-width: 250px;">
+                <div class="bono-price">Valor: <span class="strike">$18 Dólares</span> Solo por HOY: <span class="gratis">GRATIS</span></div>
+            </div>
+
+            <div class="bono-card">
+                <div class="bono-title">Bono N° 5</div>
+                <p class="bono-desc"><strong>Complementa tu aprendizaje</strong> con nuestro libro Secretos De Los Jabones de Glicerina con el que aprenderás paso a paso a elaborar <strong>mas de 20 tipos</strong> de Jabones Artesanales en casa.</p>
+                <img src="https://i.postimg.cc/5N63cZTX/Jabones-eb.png" alt="Jabones de Glicerina" style="max-width: 250px;">
+                <div class="bono-price">Valor: <span class="strike">$18 Dólares</span> Solo por HOY: <span class="gratis">GRATIS</span></div>
+            </div>
+
+            <div class="bono-card">
+                <div class="bono-title">Bono N° 6</div>
+                <p class="bono-desc">Si tu objetivo es emprender, con este libro aprenderas las mejores estrategias de venta para iniciar e impulsar tu negocio al siguiente nivel, tendrás acceso a <strong>herramientas efectivas y probadas para lograr el éxito en tus ventas.</strong></p>
+                <img src="https://i.postimg.cc/CLzNyWXY/smartmockups-lggzupve-1-1.png" alt="El Arte de Vender" style="max-width: 250px;">
+                <div class="bono-price">Valor: <span class="strike">$18 Dólares</span> Solo por HOY: <span class="gratis">GRATIS</span></div>
+            </div>
+
+            <div class="bono-card">
+                <div class="bono-title">Bono N° 7</div>
+                <p class="bono-desc"><strong>Membresía VIP</strong> la cual te hace miembro de nuestra comunidad y te da derecho a recibir <strong>actualizaciones y bonos mes a mes</strong> sin ningún costo adicional.</p>
+                <img src="https://i.postimg.cc/k4qckD3w/MEMBRESIA-VIP-2-1.png" alt="Membresía VIP">
+                <div class="bono-price">Valor: <span class="strike">$18 Dólares</span> Solo por HOY: <span class="gratis">GRATIS</span></div>
+            </div>
+
+            <div class="bono-card">
+                <div class="bono-title text-black">CERTIFICADO DE FINALIZACION</div>
+                <p class="bono-desc">Reconocemos tu esfuerzo y dedicación. Recibirás un <strong>certificado de finalización con tu nombre</strong> cuando completes 8 días con nuestro programa. Te llegará vía correo electrónico el cual podrás descargar e imprimir.</p>
+                <img src="https://i.postimg.cc/KzfNFFm2/Certificado-Shampoos-1.png" alt="Certificado">
+                <div class="bono-price">Valor: <span class="strike">$18 Dólares</span> Solo por HOY: <span class="gratis">GRATIS</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 4: OFERTA, PRIMER TIMER Y BARRA FLOTANTE -->
+    <section class="bg-white" style="padding-top: 0;">
+        <div class="container text-center">
+            <h2 class="text-purple" style="font-size: 38px; font-weight: 900; margin-bottom: 20px;">¡Oferta Disponible<br>Hasta HOY!</h2>
+            
+            <img src="https://i.postimg.cc/yNFjQc59/Oferta-Shampoos.png" alt="Todos los libros y bonos">
+            
+            <p style="color: #800080; font-size: 20px; font-weight: normal; margin: 20px 0;">(Libros Digitales, los puedes descargar al celular o pc, también los puedes imprimir)</p>
+            
+            <p style="font-size: 22px; margin-top: 30px;">El valor de este libro <strong>100% digital</strong> es de <strong>$28 dólares</strong>, pero sabemos qué estamos pasando por una situación complicada en estos momentos. Es por eso que queremos ayudarte...</p>
+            
+            <p style="font-size: 24px; margin-top: 20px;">Por lo que <strong>solo por Hoy</strong>, puedes acceder al libro ahorrando más del 60% DE DESCUENTO, es decir, <strong>un único pago de $6,97.</strong></p>
+
+            <div style="margin: 30px 0;">
+                <span style="font-size: 45px; color: #e53935; text-decoration: line-through; font-weight: bold; margin-right: 15px;">$27.97</span>
+                <span style="font-size: 60px; font-weight: 900; color: #800080; line-height: 1;">$6.97<span style="font-size: 35px; position:relative; top:-20px;">⤵</span></span>
+            </div>
+            
+            <img src="https://i.postimg.cc/3RYBPW5Z/solo-y-unico.png" alt="Un solo y unico pago" class="no-radius">
+
+            <a href="https://pay.hotmart.com/U104890526D?checkoutMode=2" target="_blank"><img src="https://i.postimg.cc/fygftKts/5b374cae4f74255974b41c4e.png" alt="Descarga Ahora" class="btn-img no-radius"></a>
+            
+            <p style="margin-top: 15px; font-size: 20px;"><em><span class="text-purple" style="text-decoration: underline;">Importante:</span></em> El precio de referencia se encuentra en dólares, <strong>pero el pago es realizado en la moneda de tu país.</strong></p>
+            
+            <h3 style="color: #d32f2f; margin-top: 40px; font-size: 28px;">Esta Oferta Finaliza En:</h3>
+            
+            <!-- PRIMER TIMER ANIMADO -->
+            <div class="timer-box">
+                <div class="timer-item"><div class="timer-number hours">15</div><div class="timer-label">Hrs</div></div>
+                <div class="timer-item"><div class="timer-number minutes">06</div><div class="timer-label">Min</div></div>
+                <div class="timer-item"><div class="timer-number seconds">23</div><div class="timer-label">Seg</div></div>
+            </div>
+
+            <!-- CONTENEDOR DE LA BARRA QUE SE VUELVE FIJA AL HACER SCROLL -->
+            <div class="cta-placeholder" id="cta-placeholder">
+                <div class="cta-block" id="sticky-cta">
+                    <a href="https://pay.hotmart.com/U104890526D?checkoutMode=2" target="_blank" class="btn-green-top">DESCARGAR CON EL 66% DE DESCUENTO</a>
+                    <div class="stock-info text-black">43 Libros Vendidos – Solo Quedan 7 Copias en promoción</div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill"></div>
+                        <div class="progress-text">86%</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN 5: HOTMART -->
+    <section class="bg-black">
+        <div class="container text-center">
+            <h2 class="text-orange" style="font-size: 36px; margin-bottom: 30px;">¿Como acceder a la promoción?</h2>
+            <p style="font-size: 22px; text-align: left; margin-bottom: 40px;">Una vez realizado el pago recibirás automáticamente un correo electrónico con el <span class="text-orange" style="font-weight: bold;">Libro + los bonos adicionales</span> para que los <span style="font-weight: bold;">descargues a tu celular o computador</span> y lo estudies en cualquier parte en que te encuentres.</p>
+            
+            <img src="https://i.postimg.cc/rmjJccq8/hotmart-logo1-01-480x154.png" alt="Hotmart Logo" class="no-radius" style="max-width: 250px;">
+            
+            <p style="font-size: 22px; text-align: left;">Te recordamos que tu compra se encuentra protegida por Hotmart, empresa dedicada a la educación en línea y <span class="text-orange">líder en la venta de libros digitales desde el año 2011.</span></p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 6: OPINIONES -->
+    <section class="bg-white text-center">
+        <div class="container">
+            <h2 style="font-size: 30px; font-weight: 900; margin-bottom: 15px;">OPINIONES SOBRE EL LIBRO</h2>
+            <p style="font-size: 30px; font-weight: bold; margin-bottom: 30px;">5.0 <span style="color: #ffc107;">⭐⭐⭐⭐⭐</span></p>
+            
+            <div class="opiniones-box">
+                <img src="https://i.postimg.cc/02FC9V16/961dd5ab-c9b9-4302-952d-2fbc67bf2b3f.jpg" alt="Comentario Audio Fabian">
+                <img src="https://i.postimg.cc/FKQgL1RL/Alguien-ya-lo-compro-Lo-recomienda-6.jpg" alt="Comentario Alicia">
+                <img src="https://i.postimg.cc/pLjJrKPK/Nuevo-2-1.jpg" alt="Comentario Edgardo">
+                <img src="https://i.postimg.cc/ydjPBBst/Nuevo-4-1.jpg" alt="Comentario Marta">
+                <img src="https://i.postimg.cc/Qd7JCcjS/Test-1.jpg" alt="Comentario Amigo">
+                <img src="https://i.postimg.cc/90NYRp4n/photo4994692081146505485.jpg" alt="Comentario Jhonatan">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 7: A QUIEN VA DIRIGIDO Y AUTORA -->
+    <section class="bg-black">
+        <div class="container">
+            <h2 class="text-orange text-center" style="font-size: 35px; margin-bottom: 30px;">¿A quién va dirigido este libro?</h2>
+            <div class="list-container">
+                <div class="list-item"><span class="icon text-orange">👉</span><p>Personas interesadas en aprender a elaborar sus propios productos capilares <span class="text-orange" style="font-weight: bold;">100% naturales</span>.</p></div>
+                <div class="list-item"><span class="icon text-orange">👉</span><p>Madres y padres preocupados por la economía del hogar y <span class="text-orange" style="font-weight: bold;">ahorrar dinero</span> en productos de cuidado personal.</p></div>
+                <div class="list-item"><span class="icon text-orange">👉</span><p>Emprendedores que quieran iniciar un <span class="text-orange" style="font-weight: bold;">negocio altamente rentable</span> en un mercado en crecimiento y atractivo.</p></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="bg-white">
+        <div class="container">
+            <h2 style="font-size: 28px; color: #333;">Sofía García</h2>
+            <p style="color: #999; margin-bottom: 20px; font-size: 18px;">Experta</p>
+            <p style="font-size: 18px; margin-bottom: 20px;">Sofía García es una experta en cosmética natural y cuidado personal. Con <strong>más de 8 años de experiencia</strong> en la elaboración de productos artesanales y naturales...</p>
+            <p style="font-size: 18px; margin-bottom: 20px;">Nacida en Colombia, Sofía descubrió su pasión por la cosmética natural mientras estudiaba en la universidad. Como estudiante de química, se dio cuenta de los efectos negativos que los productos químicos tienen en el medio ambiente...</p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 8: MÓDULOS -->
+    <section class="bg-white text-center">
+        <div class="container">
+            <h2 class="text-purple" style="font-size: 28px; margin-bottom: 30px; font-weight: bold;">¿QUE CONTIENE NUESTRO LIBRO?</h2>
+            
+            <img src="https://i.postimg.cc/4Nm5CrMD/smartmockups-lh00m7cr-1-1.jpg" alt="Leyendo Libro" style="margin-bottom: 30px;">
+            
+            <button class="accordion">Módulo 1: Introducción</button>
+            <div class="panel"><p>Bienvenida e introducción al mundo de la cosmética natural.</p></div>
+
+            <button class="accordion">Módulo 2: Elaboración de Shampoos Naturales</button>
+            <div class="panel"><p>Paso a paso para crear shampoos para todo tipo de cabellos.</p></div>
+
+            <button class="accordion">Módulo 3: Elaboración de Acondicionadores Naturales</button>
+            <div class="panel"><p>Fórmulas exactas para acondicionadores hidratantes y reparadores.</p></div>
+
+            <button class="accordion">Módulo 4: Cuidado Capilar</button>
+            <div class="panel"><p>Tónicos, mascarillas y sérums para potenciar la salud del cabello.</p></div>
+
+            <button class="accordion">Módulo 5: Inicia tu propio negocio en casa</button>
+            <div class="panel"><p>Guía para vender, empaquetar y monetizar tu nuevo conocimiento.</p></div>
+
+            <button class="accordion">Módulo 6: Conclusiones</button>
+            <div class="panel"><p>Recomendaciones finales y palabras de la autora.</p></div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 9: RESUMEN FINAL Y SEGUNDO TIMER -->
+    <section class="bg-black">
+        <div class="container text-center">
+
+            <h2 class="text-orange" style="font-size: 35px; margin-bottom: 30px;">¿QUE RECIBIRAS?</h2>
+            
+            <img src="https://i.postimg.cc/gJmDfrFH/675-x-990-px-8-1.png" alt="Paquete Completo" class="no-radius">
+            
+            <div class="list-container text-white" style="margin-top: 30px; font-size: 22px; font-weight: bold; line-height: 2;">
+                <p>✅ Libro de Shampoos Naturales y Artesanales (<span class="text-orange">$60,99</span>)</p>
+                <p>✅ Lista Exclusiva de Proveedores (<span class="text-orange">$24,99</span>)</p>
+                <p>✅ Libro Cremas Faciales y Corporales en Casa (<span class="text-orange">$24,99</span>)</p>
+                <p>✅ Libro Cuidado Natural de la Piel (<span class="text-orange">$24,99</span>)</p>
+                <p>✅ Libro Introducción a la Aromaterapia (<span class="text-orange">$17,99</span>)</p>
+                <p>✅ Libro El Arte de Vender (<span class="text-orange">$17,99</span>)</p>
+                <p>✅ Membresia VIP (<span class="text-orange">$17,99</span>)</p>
+                <p>✅ Certificado de Finalización (<span class="text-orange">$17,99</span>)</p>
+            </div>
+
+            <h2 style="font-size: 35px; margin-top: 50px;">Todo Esto Suma:<br><span class="text-red" style="font-size: 55px; text-decoration: line-through;">$132 Dólares</span></h2>
+            
+            <h2 style="font-size: 28px; margin-top: 30px;">VALOR ESPECIAL HASTA HOY<br><span style="font-size: 90px; color: #ffeb3b; font-weight: 900;">$6.97</span></h2>
+
+            <p style="font-size: 20px; margin-top: 15px; margin-bottom: 30px;">Clic para ver el precio en tu moneda y <strong>reservar tu libro 👇</strong></p>
+
+            <a href="https://pay.hotmart.com/U104890526D?checkoutMode=2" target="_blank"><img src="https://i.postimg.cc/fygftKts/5b374cae4f74255974b41c4e.png" alt="Descarga Ahora" class="btn-img no-radius"></a>
+            
+            <img src="https://i.postimg.cc/pLjJrKP1/Compra-Segura-2.png" alt="Métodos de Pago" class="no-radius">
+            <img src="https://i.postimg.cc/0Qnfxx9k/garantias-1-p4kr4hagl1ciaddsgl4z0xui3kg7qmd9nb588i5xkw.png" alt="Sellos de Garantía" class="no-radius">
+
+            <h3 style="color: #ffeb3b; margin-top: 50px; font-size: 32px;">Esta Oferta Finaliza En:</h3>
+            
+            <!-- SEGUNDO TIMER ANIMADO -->
+            <div class="timer-box" style="margin-bottom: 50px;">
+                <div class="timer-item"><div class="timer-number hours">15</div><div class="timer-label">Hrs</div></div>
+                <div class="timer-item"><div class="timer-number minutes">06</div><div class="timer-label">Min</div></div>
+                <div class="timer-item"><div class="timer-number seconds">23</div><div class="timer-label">Seg</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 10: FAQ -->
+    <section class="bg-white">
+        <div class="container">
+            <h2 class="text-center" style="font-size: 28px; font-weight: 900; margin-bottom: 40px;">PREGUNTAS FRECUENTES</h2>
+            
+            <button class="accordion faq">¿CUANDO ME ENVIAN LOS LIBROS?</button>
+            <div class="panel"><p>El envío es inmediato al correo electrónico registrado al momento de la compra.</p></div>
+
+            <button class="accordion faq">¿CÓMO PUEDO LEER EL LIBRO DIGITAL?</button>
+            <div class="panel"><p>Puedes leerlo desde tu teléfono celular, tablet o computadora (PC). También puedes imprimirlo.</p></div>
+
+            <button class="accordion faq">¿OBTENDRÉ CERTIFICADO DE FINALIZACIÓN?</button>
+            <div class="panel"><p>Sí, al completar los 8 días del programa recibes tu certificado.</p></div>
+
+            <button class="accordion faq">¿PUEDO COMPRAR SI SON LAS 3:00 AM?</button>
+            <div class="panel"><p>Sí, nuestro sistema está automatizado 24/7 y la entrega es automática sin importar la hora.</p></div>
+
+            <button class="accordion faq">¿ES SEGURO COMPRAR ONLINE EN ESTE SITIO WEB?</button>
+            <div class="panel"><p>100% seguro. Los pagos son procesados directamente por la plataforma Hotmart.</p></div>
+
+            <button class="accordion faq">¿CUÁL ES EL PRECIO?</button>
+            <div class="panel"><p>El precio promocional es de $6.97 USD (Dólares Americanos), pero al momento de pagar se convertirá automáticamente a la moneda de tu país.</p></div>
+            
+            <div class="text-center" style="margin-top: 50px;">
+                <a href="https://pay.hotmart.com/U104890526D?checkoutMode=2" target="_blank"><img src="https://i.postimg.cc/fygftKts/5b374cae4f74255974b41c4e.png" alt="Descarga Ahora" class="btn-img no-radius"></a>
+                <img src="https://i.postimg.cc/pLjJrKP1/Compra-Segura-2.png" alt="Pago Seguro" class="no-radius" style="max-width: 80%; margin-top: 10px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background-color: #1c202a; color: #666; text-align: center; padding: 50px 20px; font-size: 14px;">
+        <div class="container">
+            <p style="color: #fff; font-size: 20px; font-weight: bold;">© 2021 Todos los Derechos Reservados</p>
+            <p style="margin-top: 20px; line-height: 1.8;">DESCARGOS DE RESPONSABILIDAD IMPORTANTES: Este sitio no es parte del sitio web de Facebook o Facebook, Inc. Además, este sitio no está respaldado por Facebook de ninguna manera. FACEBOOK es una marca registrada de FACEBOOK, Inc.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: ACORDEONES, TIMERS Y BARRA STICKY -->
+    <script>
+        // 1. Funcionalidad de los Acordeones (Preguntas y Módulos)
+        var acc = document.getElementsByClassName("accordion");
+        for (var i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                } 
+            });
+        }
+
+        // 2. Funcionalidad de los Timers (sincronizados)
+        function startTimers() {
+            var timeInSeconds = 15 * 3600 + 6 * 60 + 23; 
+            
+            setInterval(function() {
+                var h = Math.floor(timeInSeconds / 3600);
+                var m = Math.floor((timeInSeconds % 3600) / 60);
+                var s = timeInSeconds % 60;
+
+                h = h < 10 ? "0" + h : h;
+                m = m < 10 ? "0" + m : m;
+                s = s < 10 ? "0" + s : s;
+
+                document.querySelectorAll('.hours').forEach(el => el.textContent = h);
+                document.querySelectorAll('.minutes').forEach(el => el.textContent = m);
+                document.querySelectorAll('.seconds').forEach(el => el.textContent = s);
+
+                if (timeInSeconds > 0) timeInSeconds--;
+            }, 1000); 
+        }
+
+        // 3. Funcionalidad de la Barra de Oferta Sticky al hacer Scroll
+        function setupStickyBar() {
+            var placeholder = document.getElementById("cta-placeholder");
+            var stickyBar = document.getElementById("sticky-cta");
+
+            window.addEventListener('scroll', function() {
+                // Calcula la posición original del bloque en la página
+                var stickyPosition = placeholder.getBoundingClientRect().top + window.pageYOffset;
+                
+                // Si el usuario bajó más allá de la posición del bloque, este se fija en el tope
+                if (window.pageYOffset >= stickyPosition) {
+                    stickyBar.classList.add("is-fixed");
+                } else {
+                    stickyBar.classList.remove("is-fixed");
+                }
+            });
+        }
+
+        // Iniciar los scripts al cargar la página
+        window.onload = function() {
+            startTimers();
+            setupStickyBar();
+        };
+    </script>
+</body>
+</html>
