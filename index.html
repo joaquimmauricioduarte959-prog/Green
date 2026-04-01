@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shampoos Naturales y Artesanales - Método Herbal Haircare</title>
     
+    <!-- Meta Tags para compartilhamento social -->
+    <meta property="og:title" content="Shampoos Naturales y Artesanales - Método Herbal Haircare">
+    <meta property="og:description" content="Conviértete en menos de 7 días una experta en shampoos naturales y comienza tu propio negocio rentable en casa">
+    <meta property="og:image" content="https://i.postimg.cc/KYyrM4zj/Mockup-Shampoo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tusitio.com">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shampoos Naturales y Artesanales">
+    <meta name="twitter:description" content="Aprende a elaborar shampoos naturales y comienza tu negocio rentable">
+    <meta name="twitter:image" content="https://i.postimg.cc/KYyrM4zj/Mockup-Shampoo.png">
+    
     <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -41,8 +56,7 @@
         img.no-radius { border-radius: 0; margin: 0 auto; }
         
         /* ================= BLOQUE DE OFERTA (STICKY ON SCROLL) ================= */
-        /* El placeholder evita que la pantalla dé un salto cuando la barra se vuelve fija */
-        .cta-placeholder { width: 100%; min-height: 120px; margin: 10px 0 30px 0; } 
+        .cta-placeholder { width: 100%; min-height: 80px; margin: 10px 0 30px 0; } 
         .cta-block { background-color: #dced00; padding: 15px 20px; text-align: center; border-radius: 10px; width: 100%; z-index: 9999; }
         .cta-block.is-fixed { position: fixed; top: 0; left: 0; right: 0; border-radius: 0; margin: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.2); animation: slideDown 0.3s ease-out; }
         
@@ -51,7 +65,23 @@
             to { transform: translateY(0); }
         }
 
-        .btn-green-top { background-color: #4CAF50; color: white; border: none; padding: 15px 20px; font-size: 16px; font-weight: bold; border-radius: 25px; width: 100%; max-width: 560px; cursor: pointer; box-shadow: 0 4px 0 #2e7d32; display: inline-block; text-decoration: none; margin-bottom: 10px; transition: transform 0.2s;}
+        .btn-green-top { 
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            padding: 15px 20px; 
+            font-size: 16px; 
+            font-weight: bold; 
+            border-radius: 25px; 
+            width: 100%; 
+            max-width: 560px; 
+            cursor: pointer; 
+            box-shadow: 0 4px 0 #2e7d32; 
+            display: inline-block; 
+            text-decoration: none; 
+            margin-bottom: 10px; 
+            transition: transform 0.2s;
+        }
         .btn-green-top:active { transform: translateY(4px); box-shadow: none; }
         .cta-block.is-fixed .btn-green-top { padding: 12px 20px; margin-bottom: 5px; } 
         
@@ -60,9 +90,26 @@
         .progress-bar-fill { background-color: #e53935; height: 100%; width: 86%; position: absolute; top: 0; left: 0; }
         .progress-text { position: absolute; right: 10px; color: #333; font-weight: bold; font-size: 14px; line-height: 22px; z-index: 2; }
 
-        /* ================= REPRODUCTOR DE VIDEO VIMEO ================= */
-        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; margin: 20px auto 30px auto; border: 3px solid #000; border-radius: 8px; overflow: hidden; background-color: #000; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        /* ================= REPRODUCTOR DE VIDEO YOUTUBE - CORRIGIDO ================= */
+        .video-container { 
+            position: relative; 
+            width: 100%; 
+            padding-bottom: 56.25%; 
+            height: 0; 
+            margin: 20px auto 30px auto; 
+            border: 3px solid #000; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            background-color: #000; 
+        }
+        .video-container iframe { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            border: 0;
+        }
 
         /* ================= PREGUNTAS CABECERA ================= */
         .header-question { font-size: 22px; font-weight: normal; margin-bottom: 25px; color: #111; line-height: 1.4; }
@@ -103,7 +150,6 @@
         .btn-img { max-width: 90%; margin: 30px auto; cursor: pointer; transition: transform 0.2s; }
         .btn-img:hover { transform: scale(1.05); }
     </style>
-<base target="_blank">
 </head>
 <body>
 
@@ -118,9 +164,14 @@
             
             <p style="font-weight: bold; font-size: 18px; margin-top: 20px;">👇 Mira el video Completo 👇</p>
             
-            <!-- Video VSL de Vimeo -->
+            <!-- Video VSL de YouTube - CORRIGIDO -->
             <div class="video-container">
-                <iframe src="https://player.vimeo.com/video/822171504?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                <iframe 
+                    src="https://www.youtube.com/embed/1skcr4sf1qk?rel=0&showinfo=0&autoplay=0&mute=0" 
+                    title="Shampoos Naturales y Artesanales" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
             </div>
 
             <!-- Preguntas de persuasión Originales -->
@@ -270,6 +321,7 @@
             
             <img src="https://i.postimg.cc/3RYBPW5Z/solo-y-unico.png" alt="Un solo y unico pago" class="no-radius">
 
+            <!-- BOTÃO IMAGEM ORIGINAL -->
             <a href="https://pay.hotmart.com/U104890526D?checkoutMode=2" target="_blank"><img src="https://i.postimg.cc/fygftKts/5b374cae4f74255974b41c4e.png" alt="Descarga Ahora" class="btn-img no-radius"></a>
             
             <p style="margin-top: 15px; font-size: 20px;"><em><span class="text-purple" style="text-decoration: underline;">Importante:</span></em> El precio de referencia se encuentra en dólares, <strong>pero el pago es realizado en la moneda de tu país.</strong></p>
@@ -286,6 +338,7 @@
             <!-- CONTENEDOR DE LA BARRA QUE SE VUELVE FIJA AL HACER SCROLL -->
             <div class="cta-placeholder" id="cta-placeholder">
                 <div class="cta-block" id="sticky-cta">
+                    <!-- BOTÃO VERDE FORMATO INICIAL -->
                     <a href="https://pay.hotmart.com/U104890526D?checkoutMode=2" target="_blank" class="btn-green-top">DESCARGAR CON EL 66% DE DESCUENTO</a>
                     <div class="stock-info text-black">43 Libros Vendidos – Solo Quedan 7 Copias en promoción</div>
                     <div class="progress-bar-bg">
@@ -400,6 +453,7 @@
 
             <p style="font-size: 20px; margin-top: 15px; margin-bottom: 30px;">Clic para ver el precio en tu moneda y <strong>reservar tu libro 👇</strong></p>
 
+            <!-- BOTÃO IMAGEM ORIGINAL -->
             <a href="https://pay.hotmart.com/U104890526D?checkoutMode=2" target="_blank"><img src="https://i.postimg.cc/fygftKts/5b374cae4f74255974b41c4e.png" alt="Descarga Ahora" class="btn-img no-radius"></a>
             
             <img src="https://i.postimg.cc/pLjJrKP1/Compra-Segura-2.png" alt="Métodos de Pago" class="no-radius">
@@ -440,6 +494,7 @@
             <div class="panel"><p>El precio promocional es de $6.97 USD (Dólares Americanos), pero al momento de pagar se convertirá automáticamente a la moneda de tu país.</p></div>
             
             <div class="text-center" style="margin-top: 50px;">
+                <!-- BOTÃO IMAGEM ORIGINAL -->
                 <a href="https://pay.hotmart.com/U104890526D?checkoutMode=2" target="_blank"><img src="https://i.postimg.cc/fygftKts/5b374cae4f74255974b41c4e.png" alt="Descarga Ahora" class="btn-img no-radius"></a>
                 <img src="https://i.postimg.cc/pLjJrKP1/Compra-Segura-2.png" alt="Pago Seguro" class="no-radius" style="max-width: 80%; margin-top: 10px;">
             </div>
@@ -497,10 +552,8 @@
             var stickyBar = document.getElementById("sticky-cta");
 
             window.addEventListener('scroll', function() {
-                // Calcula la posición original del bloque en la página
                 var stickyPosition = placeholder.getBoundingClientRect().top + window.pageYOffset;
                 
-                // Si el usuario bajó más allá de la posición del bloque, este se fija en el tope
                 if (window.pageYOffset >= stickyPosition) {
                     stickyBar.classList.add("is-fixed");
                 } else {
